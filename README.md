@@ -9,6 +9,10 @@ This repository contains four modules:
 
 Both applications use the same domain, and the same service code.
 Both retry mechanism are ultimately based on an additional Aspect, hence both need to have higher precedence than the transactional interceptor.
+
 The difference is that with spring-retry is that it will automatically unwrap the cause of any exception to look for the exceptions to retry on.
 resilience4j does not do that, so we need to use the SDN predicate to check if something should be retryable.
-That however is an advantage due to a bug in SDN prior to 7.2.11, 7.3.5 and 7.4.0-M2, which would swallow any retryable exception coming from the driver (Here's the change in question: https://github.com/spring-projects/spring-data-neo4j/commit/ddf29146a3cc4dd8aeb024d12a61a02cfcca90cf)
+
+The way the "chaos monkey" makes transaction fail here will usually not happen as a retryable exception, as it makes things fail on commit.
+This will lead in SDN versions prior 7.2.11, 7.3.5 and 7.4.0-M2 to the retryable exception being swallowed. 
+We improved this in in later versions, and this repository currently depends on a snapshot of 7.3.5, as we wanted to have an example that has reliable failure, so that one can see both retry mechanisms in action.
