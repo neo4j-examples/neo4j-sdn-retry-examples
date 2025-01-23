@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 "Neo4j,"
+ * Copyright (c) 2024-2025 "Neo4j,"
  * Neo4j Sweden AB [https://neo4j.com]
  *
  * This file is part of Neo4j.
@@ -16,43 +16,49 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.neo4j.example.retries.domain;
+package org.neo4j.example.retries.domain.sdn;
 
-import java.util.Collections;
-import java.util.List;
-
+import org.springframework.data.annotation.PersistenceCreator;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
-import org.springframework.data.neo4j.core.schema.RelationshipProperties;
-import org.springframework.data.neo4j.core.schema.TargetNode;
+import org.springframework.data.neo4j.core.schema.Node;
 
-@RelationshipProperties
-public final class Actor {
+@Node
+public final class Person {
 
 	@Id
 	@GeneratedValue
-	private String id;
+	private final String id;
 
-	@TargetNode
-	private final Person person;
+	private final String name;
 
-	private final List<String> roles;
+	private Integer born;
 
-	public Actor(Person person, List<String> roles) {
-		this.person = person;
-		this.roles = roles;
+	@PersistenceCreator
+	private Person(String id, String name, Integer born) {
+		this.id = id;
+		this.born = born;
+		this.name = name;
 	}
 
-	public Person getPerson() {
-		return person;
+	public Person(String name, Integer born) {
+		this(null, name, born);
+	}
+
+	public String getId() {
+		return id;
 	}
 
 	public String getName() {
-		return person.getName();
+		return name;
 	}
 
-	public List<String> getRoles() {
-		return Collections.unmodifiableList(roles);
+	public Integer getBorn() {
+		return born;
+	}
+
+	public void setBorn(Integer born) {
+		this.born = born;
 	}
 
 }

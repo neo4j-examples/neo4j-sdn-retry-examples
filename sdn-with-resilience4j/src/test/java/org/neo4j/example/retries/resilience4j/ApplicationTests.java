@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 "Neo4j,"
+ * Copyright (c) 2024-2025 "Neo4j,"
  * Neo4j Sweden AB [https://neo4j.com]
  *
  * This file is part of Neo4j.
@@ -28,8 +28,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 
-import org.neo4j.example.retries.domain.Movie;
-import org.neo4j.example.retries.domain.Person;
+import org.neo4j.example.retries.domain.sdn.Movie;
+import org.neo4j.example.retries.domain.sdn.Person;
 
 @Import(TestcontainersConfiguration.class)
 @SpringBootTest

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 "Neo4j,"
+ * Copyright (c) 2024-2025 "Neo4j,"
  * Neo4j Sweden AB [https://neo4j.com]
  *
  * This file is part of Neo4j.
@@ -16,36 +16,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.neo4j.example.retries.domain;
+package org.neo4j.example.retries.domain.ogm;
 
-import org.springframework.data.annotation.PersistenceCreator;
-import org.springframework.data.neo4j.core.schema.GeneratedValue;
-import org.springframework.data.neo4j.core.schema.Id;
-import org.springframework.data.neo4j.core.schema.Node;
+import org.neo4j.ogm.annotation.GeneratedValue;
+import org.neo4j.ogm.annotation.Id;
+import org.neo4j.ogm.annotation.NodeEntity;
 
-@Node
+@NodeEntity
 public final class Person {
 
 	@Id
 	@GeneratedValue
-	private final String id;
+	private Long id;
 
 	private final String name;
 
 	private Integer born;
 
-	@PersistenceCreator
-	private Person(String id, String name, Integer born) {
-		this.id = id;
+	public Person(String name, Integer born) {
 		this.born = born;
 		this.name = name;
 	}
 
-	public Person(String name, Integer born) {
-		this(null, name, born);
-	}
-
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 

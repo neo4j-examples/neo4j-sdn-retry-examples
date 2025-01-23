@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 "Neo4j,"
+ * Copyright (c) 2024-2025 "Neo4j,"
  * Neo4j Sweden AB [https://neo4j.com]
  *
  * This file is part of Neo4j.
@@ -24,11 +24,11 @@ import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import org.neo4j.example.retries.domain.Actor;
-import org.neo4j.example.retries.domain.Movie;
-import org.neo4j.example.retries.domain.MovieRepository;
-import org.neo4j.example.retries.domain.PeopleRepository;
-import org.neo4j.example.retries.domain.Person;
+import org.neo4j.example.retries.domain.sdn.Actor;
+import org.neo4j.example.retries.domain.sdn.Movie;
+import org.neo4j.example.retries.domain.sdn.MovieRepository;
+import org.neo4j.example.retries.domain.sdn.PeopleRepository;
+import org.neo4j.example.retries.domain.sdn.Person;
 import io.github.resilience4j.retry.annotation.Retry;
 
 @Service

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 "Neo4j,"
+ * Copyright (c) 2024-2025 "Neo4j,"
  * Neo4j Sweden AB [https://neo4j.com]
  *
  * This file is part of Neo4j.
@@ -26,7 +26,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
 
-import org.neo4j.example.retries.domain.DomainConfig;
+import org.neo4j.example.retries.domain.sdn.DomainConfig;
 import io.github.resilience4j.core.registry.EntryAddedEvent;
 import io.github.resilience4j.core.registry.EntryRemovedEvent;
 import io.github.resilience4j.core.registry.EntryReplacedEvent;
@@ -34,10 +34,8 @@ import io.github.resilience4j.core.registry.RegistryEventConsumer;
 import io.github.resilience4j.retry.Retry;
 
 @SpringBootApplication
-@EnableNeo4jRepositories(
-		basePackages = { "org.neo4j.example.retries.domain", "org.neo4j.example.retries.resilience4j" })
-@Import(DomainConfig.class) // This is only needed as the config is not in the same base
-							// package
+@EnableNeo4jRepositories(basePackages = { "org.neo4j.example.retries.domain.sdn", "org.neo4j.example.retries.resilience4j" })
+@Import(DomainConfig.class) // This is only needed as the config is not in the same base package
 public class Application {
 
 	public static void main(String[] args) {

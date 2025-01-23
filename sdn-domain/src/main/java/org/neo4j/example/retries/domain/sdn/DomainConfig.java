@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 "Neo4j,"
+ * Copyright (c) 2024-2025 "Neo4j,"
  * Neo4j Sweden AB [https://neo4j.com]
  *
  * This file is part of Neo4j.
@@ -16,12 +16,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.neo4j.example.retries.domain;
+package org.neo4j.example.retries.domain.sdn;
 
 import org.neo4j.cypherdsl.core.renderer.Dialect;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.neo4j.core.Neo4jPersistenceExceptionTranslator;
 
 @Configuration(proxyBeanMethods = false)
 public class DomainConfig {

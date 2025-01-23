@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (c) 2024 "Neo4j,"
+    Copyright (c) 2024-2025 "Neo4j,"
     Neo4j Sweden AB [https://neo4j.com]
 
     This file is part of Neo4j.
@@ -30,6 +30,9 @@
 		<module>sdn-domain</module>
 		<module>sdn-with-spring-retry</module>
 		<module>sdn-with-resilience4j</module>
+		<module>ogm-domain</module>
+		<module>ogm-with-resilience4j</module>
+		<module>ogm-with-spring-retry</module>
 	</modules>
 	<properties>
 		<maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
@@ -38,6 +41,7 @@
 		<maven.compiler.release>17</maven.compiler.release>
 		<maven.version>3.9.4</maven.version>
 		<neo4j-java-driver.version>5.27.0</neo4j-java-driver.version>
+		<neo4j-ogm-spring-data.version>1.2.2</neo4j-ogm-spring-data.version>
 		<neo4j.version>5.26.1</neo4j.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
