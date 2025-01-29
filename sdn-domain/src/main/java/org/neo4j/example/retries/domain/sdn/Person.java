@@ -18,6 +18,9 @@
  */
 package org.neo4j.example.retries.domain.sdn;
 
+import java.time.LocalDateTime;
+
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.PersistenceCreator;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
@@ -33,6 +36,9 @@ public final class Person {
 	private final String name;
 
 	private Integer born;
+
+	@CreatedDate
+	private LocalDateTime createdOn;
 
 	@PersistenceCreator
 	private Person(String id, String name, Integer born) {
@@ -61,4 +67,11 @@ public final class Person {
 		this.born = born;
 	}
 
+	public LocalDateTime getCreatedOn() {
+		return createdOn;
+	}
+
+	public void setCreatedOn(LocalDateTime createdOn) {
+		this.createdOn = createdOn;
+	}
 }

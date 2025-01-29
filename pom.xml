@@ -30,6 +30,7 @@
 		<module>sdn-domain</module>
 		<module>sdn-with-spring-retry</module>
 		<module>sdn-with-resilience4j</module>
+		<module>sdn-rate-limited</module>
 		<module>ogm-domain</module>
 		<module>ogm-with-resilience4j</module>
 		<module>ogm-with-spring-retry</module>

@@ -16,15 +16,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.neo4j.example.retries.domain.sdn;
+package org.neo4j.example.rate_limited.resilience4j;
 
-import org.springframework.data.neo4j.repository.Neo4jRepository;
-import org.springframework.data.neo4j.repository.query.Query;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+import org.springframework.context.annotation.Bean;
+import org.testcontainers.containers.Neo4jContainer;
+import org.testcontainers.utility.DockerImageName;
+import org.testcontainers.utility.MountableFile;
 
-public interface PeopleRepository extends Neo4jRepository<Person, String> {
+@TestConfiguration(proxyBeanMethods = false)
+class TestcontainersConfiguration {
 
-	@Transactional
-	@Query("CREATE (p:Person {name: :#{#name}, born: :#{#born}, createdOn: localdatetime.transaction()}) RETURN p")
-	Person createNewPersonViaQuery(String name, Integer born);
+	@SuppressWarnings("resource")
+	@Bean
+	@ServiceConnection
+	Neo4jContainer<?> neo4jContainer() {
+		return new Neo4jContainer<>(DockerImageName.parse("neo4j:5.26.1")).withReuse(true);
+	}
+
 }

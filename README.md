@@ -10,6 +10,7 @@ This repository contains a couple of modules:
 
 * `sdn-domain`: A Spring Data Neo4j domain containing the usual movies and actors, with two repositories as data access objects
 * `sdn-with-resilience4j`: A Spring Boot application with SDN and a service class that uses both repositories and has several interactions with the database. The service is made retryable with resilience4j. The SDN6 `RetryExceptionPredicate` is used to determine the retryability of the exception thrown.
+* `sdn-rate-limited`: A Spring Boot application with SDN, also using resilience4j but for rate limiting, making sure that Neo4j gets only 10 queries/second
 * `sdn-with-spring-retry`: A Spring Boot application with SDN and a service class that uses both repositories and has several interactions with the database. The service is made retryable with spring-retry.
 
 **SDN5+OGM and pure Neo4j-OGM examples**
